@@ -10,6 +10,7 @@ type Cmd struct {
 	helpFlag    bool
 	versionFlag bool
 	cpOption    string
+	XjreOption  string // 指定JRE启动类路径
 	class       string
 	args        []string
 }
@@ -22,6 +23,7 @@ func parseCmd() *Cmd {
 	flag.BoolVar(&cmd.versionFlag, "version", false, "print version and exit")
 	flag.StringVar(&cmd.cpOption, "classpath", "", "classpath")
 	flag.StringVar(&cmd.cpOption, "cp", "", "classpath")
+	flag.StringVar(&cmd.XjreOption, "Xjre", "", "path to jre")
 	flag.Parse()
 	args := flag.Args()
 	if len(args) > 0 {
@@ -33,4 +35,5 @@ func parseCmd() *Cmd {
 
 func printUsage() {
 	fmt.Printf("Usage: %s [-options] class [args...]\n", os.Args[0])
+	//flag.PrintDefaults()
 }
