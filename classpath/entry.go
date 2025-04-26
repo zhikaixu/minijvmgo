@@ -16,8 +16,7 @@ type Entry interface {
 // initialize Entry type depending on path
 func newEntry(path string) Entry {
 	if strings.Contains(path, pathListSeparator) {
-		//return newCompositeEntry(path)
-		return nil
+		return newCompositeEntry(path)
 	}
 	if strings.HasSuffix(path, "*") {
 		//return newWildcardEntry(path)
@@ -26,7 +25,6 @@ func newEntry(path string) Entry {
 	if strings.HasSuffix(path, ".jar") || strings.HasSuffix(path, ".JAR") ||
 		strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".ZIP") {
 		return newZipEntry(path)
-		//return nil
 	}
 	return newDirEntry(path)
 }
