@@ -8,7 +8,7 @@ import (
 
 func newWildcardEntry(path string) *CompositeEntry {
 	baseDir := path[:len(path)-1] // remove *
-	entryList := make([]Entry, 5)
+	entryList := make([]Entry, 0)
 	walkFn := func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -23,6 +23,6 @@ func newWildcardEntry(path string) *CompositeEntry {
 		}
 		return nil
 	}
-	filepath.Walk(path, walkFn)
+	filepath.Walk(baseDir, walkFn)
 	return &CompositeEntry{entries: entryList}
 }

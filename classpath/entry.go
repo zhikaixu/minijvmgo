@@ -19,8 +19,7 @@ func newEntry(path string) Entry {
 		return newCompositeEntry(path)
 	}
 	if strings.HasSuffix(path, "*") {
-		//return newWildcardEntry(path)
-		return nil
+		return newWildcardEntry(path)
 	}
 	if strings.HasSuffix(path, ".jar") || strings.HasSuffix(path, ".JAR") ||
 		strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".ZIP") {

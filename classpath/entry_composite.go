@@ -10,7 +10,7 @@ type CompositeEntry struct {
 }
 
 func newCompositeEntry(pathList string) *CompositeEntry {
-	entryList := make([]Entry, 5)
+	entryList := make([]Entry, 0)
 	for _, path := range strings.Split(pathList, pathListSeparator) {
 		entry := newEntry(path)
 		entryList = append(entryList, entry)
